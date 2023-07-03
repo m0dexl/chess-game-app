@@ -1,8 +1,8 @@
 import React from "react";
 import "./Board.css";
-import { getCharacter } from "../../helper";
 import Ranks from "../bits/Ranks";
 import Files from "../bits/Files";
+import Pieces from "../Pieces/Pieces";
 
 const Board = () => {
   const getClassName = (i, j) => {
@@ -32,6 +32,8 @@ const Board = () => {
           ))
         )}
       </div>
+
+      <Pieces />
       <Files files={files} />
     </div>
   );
