@@ -1,11 +1,23 @@
 import React from "react";
 
 const Piece = ({ rank, file, piece }) => {
+  const onDragStart = (e) => {
+    e.dataTransfer.effectedAllowed = "move";
+    e.dataTransfer.setData("text/plain", `${piece},${rank},${file}`);
+    setTimeout(() => {
+      e.target.style.display = "none";
+    }, 0);
+  };
+
+  const onDragEnd = (e) => {
+    e.target.style.display = "block";
+  };
   return (
     <div
       className={`piece ${piece} p-${file}${rank}`}
       draggable={true}
-      onClick={() => console.log(`file:${file} and rank=${rank}`)}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
     />
   );
 };
